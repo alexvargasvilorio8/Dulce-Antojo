@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'registrar_venta.dart';
 import 'registrar_compra.dart';
 import 'calcular_impuestos.dart';
+import '../../screen/home_screen.dart';
 
 class AdminIndex extends StatelessWidget {
   final String nombre;
@@ -75,7 +76,13 @@ class AdminIndex extends StatelessWidget {
                   icon: Icons.logout,
                   texto: "Cerrar sesión",
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ),
+                      (route) => false,
+                    );
                   },
                 ),
               ],

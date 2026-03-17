@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'detalle_factura.dart';
 
 class RegistrarVenta extends StatefulWidget {
   const RegistrarVenta({super.key});
@@ -400,7 +401,27 @@ class _RegistrarVentaState extends State<RegistrarVenta> {
                                 Text("L ${factura["total"].toStringAsFixed(2)}"),
                                 TextButton(
                                   onPressed: () {
-                                    // Aquí luego irá detalle_factura.dart
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DetalleFactura(
+                                          facturaId: factura["id"],
+                                          vendidoA: factura["vendido_a"],
+                                          fecha: factura["fecha"],
+                                          subtotal: factura["subtotal"],
+                                          iva: factura["iva"],
+                                          total: factura["total"],
+                                          productos: [
+                                            {
+                                              "nombre": "Cheesecake Fresa",
+                                              "cantidad": 2,
+                                              "precio": 156.52,
+                                              "subtotal": 313.04,
+                                            }
+                                          ],
+                                        ),
+                                      ),
+                                    );
                                   },
                                   child: const Text("Ver"),
                                 ),
