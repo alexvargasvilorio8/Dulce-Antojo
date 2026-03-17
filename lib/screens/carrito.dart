@@ -51,10 +51,13 @@ class _CartState extends State<Cart> {
   }
 
   void removeItem(int index) {
-    setState(() {
-      cart.removeAt(index);
-    });
-  }
+  setState(() {
+    RemoveFromCart.remove(
+      cart: cart,
+      id: cart[index]["id"],
+    );
+  });
+}
 
   @override
   Widget build(BuildContext context) {
