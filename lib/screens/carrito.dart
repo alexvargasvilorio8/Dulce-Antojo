@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import '../services/update_cart.dart';
-import '../services/remove_from_cart.dart';
 
 class Cart extends StatefulWidget {
-  const Cart({super.key});
+  const Cart({super.key, required List<Map<String, dynamic>> cart});
 
   @override
   State<Cart> createState() => _CartState();
@@ -51,13 +49,10 @@ class _CartState extends State<Cart> {
   }
 
   void removeItem(int index) {
-  setState(() {
-    RemoveFromCart.remove(
-      cart: cart,
-      id: cart[index]["id"],
-    );
-  });
-}
+    setState(() {
+      cart.removeAt(index);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
